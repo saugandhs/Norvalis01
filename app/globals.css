@@ -197,6 +197,36 @@
   }
 }
 
+@keyframes soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: var(--pulse-from, 0.25);
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: var(--pulse-to, 0.5);
+  }
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse var(--pulse-duration, 9s) ease-in-out infinite;
+}
+
+@keyframes glow-drift {
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(0, -4%) scale(1.08);
+  }
+}
+
+.animate-glow-drift {
+  animation: glow-drift 12s ease-in-out infinite;
+}
+
 .animate-float-up {
   animation: float-up linear infinite;
 }
@@ -207,7 +237,9 @@
 
 @media (prefers-reduced-motion: reduce) {
   .animate-float-up,
-  .animate-gentle-rise {
+  .animate-gentle-rise,
+  .animate-glow-drift,
+  .animate-soft-pulse {
     animation: none;
     opacity: 1;
   }
