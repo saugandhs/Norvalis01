@@ -197,19 +197,20 @@
   }
 }
 
-.bg-heart-texture {
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewBox='0 0 44 44'%3E%3Cpath d='M22 32c-1-6.5-8.5-8.5-8.5-14a4.6 4.6 0 0 1 8.5-2.6 4.6 4.6 0 0 1 8.5 2.6c0 5.5-7.5 7.5-8.5 14z' fill='none' stroke='%23c64863' stroke-width='1.4' stroke-opacity='0.85'/%3E%3C/svg%3E");
-  background-size: 44px 44px;
-  -webkit-mask-image: radial-gradient(
-    ellipse 90% 85% at 50% 50%,
-    black 40%,
-    transparent 95%
-  );
-  mask-image: radial-gradient(
-    ellipse 90% 85% at 50% 50%,
-    black 40%,
-    transparent 95%
-  );
+@keyframes soft-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: var(--pulse-from, 0.25);
+  }
+  50% {
+    transform: scale(1.12);
+    opacity: var(--pulse-to, 0.5);
+  }
+}
+
+.animate-soft-pulse {
+  animation: soft-pulse var(--pulse-duration, 9s) ease-in-out infinite;
 }
 
 @keyframes glow-drift {
@@ -237,7 +238,8 @@
 @media (prefers-reduced-motion: reduce) {
   .animate-float-up,
   .animate-gentle-rise,
-  .animate-glow-drift {
+  .animate-glow-drift,
+  .animate-soft-pulse {
     animation: none;
     opacity: 1;
   }
