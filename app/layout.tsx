@@ -2,6 +2,7 @@ import { Analytics } from '@vercel/analytics/next'
 import type { Metadata, Viewport } from 'next'
 import { Geist, Geist_Mono, Instrument_Serif } from 'next/font/google'
 import './globals.css'
+import GoogleAnalytics from "@/components/GoogleAnalytics";
 
 const geistSans = Geist({ variable: '--font-geist-sans', subsets: ['latin'] })
 const geistMono = Geist_Mono({
@@ -53,6 +54,7 @@ export default function RootLayout({
       className={`light ${geistSans.variable} ${geistMono.variable} ${instrumentSerif.variable} bg-background`}
     >
       <body className="font-sans antialiased">
+        <GoogleAnalytics />
         {children}
         {process.env.NODE_ENV === 'production' && <Analytics />}
       </body>
